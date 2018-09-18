@@ -6,56 +6,52 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner kbInput = new Scanner(System.in);
-        boolean length = false;
-        boolean characters = false;
+        boolean result = false;
+        char[] wordArray;
+        char[] anagramArray;
         System.out.println("Type in any word. Press enter. Type in another word that is an anagram of the first word.");
         String word = kbInput.next();
         System.out.println("Now type in the anagram.");
         String anagram = kbInput.next();
+        wordArray = word.toLowerCase().toCharArray();
+        anagramArray = anagram.toLowerCase().toCharArray();
+        Arrays.sort(wordArray);
+        Arrays.sort(anagramArray);
 
-        int wordLength = word.length();
-        int anagramLength = anagram.length();
+        if (word.length() != anagram.length()) {
 
-        if (wordLength == anagramLength) {
-
-            length = true;
-
-        } else {
-
-            length = false;
-
-        }
-
-
-        if (length == false) {
-
-            System.out.println("That is not an anagram. Goodbye.");
+            result = false;
 
         } else {
 
-            char[] wordArray = word.toLowerCase().toCharArray();
-            char[] anagramArray = anagram.toLowerCase().toCharArray();
+            for (int i = 0; i < word.length(); i++) {
 
-            Arrays.sort(wordArray);
-            Arrays.sort(anagramArray);
+                if (wordArray[i] != anagramArray[i]) {
 
-            if (wordArray == anagramArray) {
+                    result = false;
 
-                characters = true;
+                } else {
+
+                    result = true;
+
+                }
 
             }
 
         }
 
-        if (characters == true) {
+        if (result == true) {
 
-            System.out.println("That is an anagram! Congratulations!");
+            System.out.println("You got it! That is an anagram of " + word + "! Congratulations!");
 
         } else {
 
-            System.out.println("That is not an anagram. Goodbye.");
+            System.out.println("That is not an anagram of " + word + ".");
 
         }
 
+        main(null);
+
     }
+
 }
