@@ -40,7 +40,11 @@ public class Main {
 
         }
 
-        if (result == true) {
+        if (word.equals(anagram)) {
+
+            System.out.println("That is the same word!");
+
+        } else if (result == true) {
 
             System.out.println("You got it! That is an anagram of " + word + "! Congratulations!");
 
